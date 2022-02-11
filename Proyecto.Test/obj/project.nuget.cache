@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Bgrmw3a0D16fyfXoO+IG0RA4NfjjpGytFaCGQTiC/8JZ+He+vRjNuz1HVS3npXByErYVSYzAEbmYyPUSqPGoOg==",
+  "dgSpecHash": "pQdY8kQkdKcEIICdjn4VmlHF3Z9Kwgg1IkpdOIjRm06LDgGHbmzeg7fvPuL6BoNoTLbVOn41oBfC0bmfHodpnA==",
   "success": true,
-  "projectFilePath": "D:\\Carvajal\\Proyecto.Test\\Proyecto.Test.csproj",
+  "projectFilePath": "D:\\Carvajal\\Carvajal\\Proyecto.Test\\Proyecto.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\richo\\.nuget\\packages\\anglesharp\\0.16.1\\anglesharp.0.16.1.nupkg.sha512",
     "C:\\Users\\richo\\.nuget\\packages\\anglesharp.css\\0.16.2\\anglesharp.css.0.16.2.nupkg.sha512",

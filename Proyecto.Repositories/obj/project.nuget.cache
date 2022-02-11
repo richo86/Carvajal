@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VVpv6zWsLIzKHFtZFuLqxBES5yWWf2r3IS5k/K9H9RQ0k2ZNqEbYUrE2N58Ngt5JyZ4n8eKaekDMJyHPoBDLVw==",
+  "dgSpecHash": "bip2V1dA3DagU8b0+hlig18GRmZ4+mjFMt/XdTajhaXfJQ2dPmfopSfqkeeE69U15q+CMQvMjLfZOYr1NmsxjA==",
   "success": true,
-  "projectFilePath": "D:\\Carvajal\\Proyecto.Repositories\\Proyecto.Repositories.csproj",
+  "projectFilePath": "D:\\Carvajal\\Carvajal\\Proyecto.Repositories\\Proyecto.Repositories.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\richo\\.nuget\\packages\\anglesharp\\0.16.1\\anglesharp.0.16.1.nupkg.sha512",
     "C:\\Users\\richo\\.nuget\\packages\\anglesharp.css\\0.16.2\\anglesharp.css.0.16.2.nupkg.sha512",

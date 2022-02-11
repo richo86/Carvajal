@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Carvajal\\Proyecto.API\\Proyecto.API.csproj": {}
+    "D:\\Carvajal\\Carvajal\\Proyecto.API\\Proyecto.API.csproj": {}
   },
   "projects": {
-    "D:\\Carvajal\\Proyecto.API\\Proyecto.API.csproj": {
+    "D:\\Carvajal\\Carvajal\\Proyecto.API\\Proyecto.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Carvajal\\Proyecto.API\\Proyecto.API.csproj",
+        "projectUniqueName": "D:\\Carvajal\\Carvajal\\Proyecto.API\\Proyecto.API.csproj",
         "projectName": "Proyecto.API",
-        "projectPath": "D:\\Carvajal\\Proyecto.API\\Proyecto.API.csproj",
+        "projectPath": "D:\\Carvajal\\Carvajal\\Proyecto.API\\Proyecto.API.csproj",
         "packagesPath": "C:\\Users\\richo\\.nuget\\packages\\",
-        "outputPath": "D:\\Carvajal\\Proyecto.API\\obj\\",
+        "outputPath": "D:\\Carvajal\\Carvajal\\Proyecto.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -31,11 +31,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\Carvajal\\Proyecto.Models\\Proyecto.Models.csproj": {
-                "projectPath": "D:\\Carvajal\\Proyecto.Models\\Proyecto.Models.csproj"
+              "D:\\Carvajal\\Carvajal\\Proyecto.Models\\Proyecto.Models.csproj": {
+                "projectPath": "D:\\Carvajal\\Carvajal\\Proyecto.Models\\Proyecto.Models.csproj"
               },
-              "D:\\Carvajal\\Proyecto.Repositories\\Proyecto.Repositories.csproj": {
-                "projectPath": "D:\\Carvajal\\Proyecto.Repositories\\Proyecto.Repositories.csproj"
+              "D:\\Carvajal\\Carvajal\\Proyecto.Repositories\\Proyecto.Repositories.csproj": {
+                "projectPath": "D:\\Carvajal\\Carvajal\\Proyecto.Repositories\\Proyecto.Repositories.csproj"
               }
             }
           }
@@ -93,14 +93,14 @@
         }
       }
     },
-    "D:\\Carvajal\\Proyecto.Models\\Proyecto.Models.csproj": {
+    "D:\\Carvajal\\Carvajal\\Proyecto.Models\\Proyecto.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Carvajal\\Proyecto.Models\\Proyecto.Models.csproj",
+        "projectUniqueName": "D:\\Carvajal\\Carvajal\\Proyecto.Models\\Proyecto.Models.csproj",
         "projectName": "Proyecto.Models",
-        "projectPath": "D:\\Carvajal\\Proyecto.Models\\Proyecto.Models.csproj",
+        "projectPath": "D:\\Carvajal\\Carvajal\\Proyecto.Models\\Proyecto.Models.csproj",
         "packagesPath": "C:\\Users\\richo\\.nuget\\packages\\",
-        "outputPath": "D:\\Carvajal\\Proyecto.Models\\obj\\",
+        "outputPath": "D:\\Carvajal\\Carvajal\\Proyecto.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -163,14 +163,14 @@
         }
       }
     },
-    "D:\\Carvajal\\Proyecto.Repositories\\Proyecto.Repositories.csproj": {
+    "D:\\Carvajal\\Carvajal\\Proyecto.Repositories\\Proyecto.Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Carvajal\\Proyecto.Repositories\\Proyecto.Repositories.csproj",
+        "projectUniqueName": "D:\\Carvajal\\Carvajal\\Proyecto.Repositories\\Proyecto.Repositories.csproj",
         "projectName": "Proyecto.Repositories",
-        "projectPath": "D:\\Carvajal\\Proyecto.Repositories\\Proyecto.Repositories.csproj",
+        "projectPath": "D:\\Carvajal\\Carvajal\\Proyecto.Repositories\\Proyecto.Repositories.csproj",
         "packagesPath": "C:\\Users\\richo\\.nuget\\packages\\",
-        "outputPath": "D:\\Carvajal\\Proyecto.Repositories\\obj\\",
+        "outputPath": "D:\\Carvajal\\Carvajal\\Proyecto.Repositories\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -190,8 +190,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\Carvajal\\Proyecto.Models\\Proyecto.Models.csproj": {
-                "projectPath": "D:\\Carvajal\\Proyecto.Models\\Proyecto.Models.csproj"
+              "D:\\Carvajal\\Carvajal\\Proyecto.Models\\Proyecto.Models.csproj": {
+                "projectPath": "D:\\Carvajal\\Carvajal\\Proyecto.Models\\Proyecto.Models.csproj"
               }
             }
           }

@@ -7866,11 +7866,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Carvajal\\Proyecto.Test\\Proyecto.Test.csproj",
+      "projectUniqueName": "D:\\Carvajal\\Carvajal\\Proyecto.Test\\Proyecto.Test.csproj",
       "projectName": "Proyecto.Test",
-      "projectPath": "D:\\Carvajal\\Proyecto.Test\\Proyecto.Test.csproj",
+      "projectPath": "D:\\Carvajal\\Carvajal\\Proyecto.Test\\Proyecto.Test.csproj",
       "packagesPath": "C:\\Users\\richo\\.nuget\\packages\\",
-      "outputPath": "D:\\Carvajal\\Proyecto.Test\\obj\\",
+      "outputPath": "D:\\Carvajal\\Carvajal\\Proyecto.Test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -7890,8 +7890,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\Carvajal\\Proyecto.UI\\Proyecto.UI.csproj": {
-              "projectPath": "D:\\Carvajal\\Proyecto.UI\\Proyecto.UI.csproj"
+            "D:\\Carvajal\\Carvajal\\Proyecto.UI\\Proyecto.UI.csproj": {
+              "projectPath": "D:\\Carvajal\\Carvajal\\Proyecto.UI\\Proyecto.UI.csproj"
             }
           }
         }
