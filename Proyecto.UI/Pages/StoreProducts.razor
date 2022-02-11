@@ -1,0 +1,117 @@
+﻿@page "/store/{text}"
+@using Models
+@using Interfaces
+@inject IProductService productService
+@inject NavigationManager navigation
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+
+<MudBreadcrumbs Items="_items"></MudBreadcrumbs>
+
+@if (text == null)
+{
+    <MudText Typo="Typo.h3">Ruta no valida</MudText>
+
+    <MudButton OnClick="() => navigateBack()">Regresar</MudButton>
+}
+else
+{
+    <MudGrid Spacing="9" Justify="Justify.Center">
+        @foreach (var item in products)
+        {
+            int buffer = i;
+            <MudItem>
+                <img style="margin-bottom:25px;" class="storeImage" height="600" width="300" src="@(path + item.imagePath)" />
+                <MudText Style="font-weight:bold;">@item.name</MudText>
+                <MudText Style="font-weight:bold;">$@item.price</MudText>
+                <MudSelect Margin="Margin.Dense" T="int" Label="Coffee" Variant="Variant.Text">
+                    <MudSelectItem Value="1" />
+                    <MudSelectItem Value="2" />
+                    <MudSelectItem Value="3" />
+                    <MudSelectItem Value="4" />
+                    <MudSelectItem Value="5" />
+                </MudSelect>
+                <MudButton Style="margin-top:15px;" Variant="Variant.Outlined" Color="Color.Primary" @onclick="(() => AddToCart(item.id,false,buffer))">Agregar al carrito</MudButton>
+                <MudButton Style="margin-top:15px;" Variant="Variant.Outlined" @onclick="() => AddToCart(item.id,true,buffer)">Comprar</MudButton>
+            </MudItem>
+
+        if ((i + 1) != products.Count())
+        i++;
+        }
+    </MudGrid>
+}
+
+
+@code {
+    [Parameter]
+    public string text { get; set; }
+
+    List<Models.Cart> cartList = new List<Models.Cart>();
+
+    Models.Cart cart = new Models.Cart();
+
+    public bool LoggedIn = false;
+
+    List<Models.Products> products = new List<Models.Products>();
+
+    string path = "/images/";
+
+    int i = 0;
+
+    int[] quantityList;
+
+    int currentIndex = 0;
+
+    private List<BreadcrumbItem> _items = new List<BreadcrumbItem>
+    {
+        new BreadcrumbItem("Tienda", href: "/store"),
+        new BreadcrumbItem("Carrito", href: "/cart"),
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = await productService.GetAllProducts();
+
+        var category = (Categorias)Enum.Parse(typeof(Categorias), text);
+
+        products = products.Where(x => x.category == category).ToList();
+
+        quantityList = new int[products.Count()];
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        LoggedIn = await sessionStorage.GetItemAsync<bool>("loggedIn");
+
+        StateHasChanged();
+    }
+
+    private void navigateBack()
+    {
+        navigation.NavigateTo("/store");
+    }
+
+    private void onSelect(ChangeEventArgs e)
+    {
+        quantityList[currentIndex] = Convert.ToInt32(e.Value);
+    }
+
+    private async Task AddToCart(int id, bool redirect, int index)
+    {
+        var selectedProduct = products.Where(x => x.id == id).FirstOrDefault();
+
+        cart.imagePath = selectedProduct.imagePath;
+        cart.Price = selectedProduct.price;
+        cart.ProductName = selectedProduct.name;
+        cart.ProductId = id;
+        cart.Quantity = 1;
+
+        cartList.Add(cart);
+
+        await sessionStorage.SetItemAsync<List<Models.Cart>>("cart", cartList);
+
+        cart = new Models.Cart();
+
+        if (redirect)
+            navigation.NavigateTo("/cart");
+    }
+}

@@ -1,0 +1,16 @@
+D:\Carvajal\Proyecto.Repositories\bin\Debug\netcoreapp3.1\Proyecto.Repositories.deps.json
+D:\Carvajal\Proyecto.Repositories\bin\Debug\netcoreapp3.1\Proyecto.Repositories.dll
+D:\Carvajal\Proyecto.Repositories\bin\Debug\netcoreapp3.1\Proyecto.Repositories.pdb
+D:\Carvajal\Proyecto.Repositories\bin\Debug\netcoreapp3.1\Proyecto.Models.dll
+D:\Carvajal\Proyecto.Repositories\bin\Debug\netcoreapp3.1\Proyecto.Models.pdb
+D:\Carvajal\Proyecto.Repositories\obj\Debug\netcoreapp3.1\Proyecto.Repositories.csproj.AssemblyReference.cache
+D:\Carvajal\Proyecto.Repositories\obj\Debug\netcoreapp3.1\Proyecto.Repositories.GeneratedMSBuildEditorConfig.editorconfig
+D:\Carvajal\Proyecto.Repositories\obj\Debug\netcoreapp3.1\Proyecto.Repositories.AssemblyInfoInputs.cache
+D:\Carvajal\Proyecto.Repositories\obj\Debug\netcoreapp3.1\Proyecto.Repositories.AssemblyInfo.cs
+D:\Carvajal\Proyecto.Repositories\obj\Debug\netcoreapp3.1\Proyecto.Repositories.csproj.CoreCompileInputs.cache
+D:\Carvajal\Proyecto.Repositories\obj\Debug\netcoreapp3.1\Proyecto.Repositories.csproj.CopyComplete
+D:\Carvajal\Proyecto.Repositories\obj\Debug\netcoreapp3.1\Proyecto.Repositories.dll
+D:\Carvajal\Proyecto.Repositories\obj\Debug\netcoreapp3.1\Proyecto.Repositories.pdb
+D:\Carvajal\Proyecto.Repositories\bin\Debug\netcoreapp3.1\Proyecto.Repositories.runtimeconfig.json
+D:\Carvajal\Proyecto.Repositories\bin\Debug\netcoreapp3.1\Proyecto.Repositories.runtimeconfig.dev.json
+D:\Carvajal\Proyecto.Repositories\obj\Debug\netcoreapp3.1\Proyecto.Repositories.genruntimeconfig.cache

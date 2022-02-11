@@ -1,0 +1,11 @@
+﻿@page "/navigation1"
+
+<MudBreadcrumbs Items="_items"></MudBreadcrumbs>
+
+@code {
+    private List<BreadcrumbItem> _items = new List<BreadcrumbItem>
+    {
+        new BreadcrumbItem("Tienda", href: "/store"),
+        new BreadcrumbItem("Carrito", href: "/cart"),
+    };
+}

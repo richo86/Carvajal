@@ -1,0 +1,57 @@
+﻿@page "/statistics"
+@using Models
+@using Interfaces
+@inject ISalesService salesService
+@inject NavigationManager navigation
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+
+<MudBreadcrumbs Items="_items"></MudBreadcrumbs>
+
+<div>
+    <MudChart ChartType="ChartType.Bar" ChartSeries="@Series" @bind-SelectedIndex="Index" XAxisLabels="@XAxisLabels" Width="100%" Height="600px"></MudChart>
+</div>
+
+@code {
+    public List<Sales> sales { get; set; }
+
+    public bool LoggedIn { get; set; }
+
+    private int Index = -10;
+
+    public List<ChartSeries> Series = new List<ChartSeries>();
+
+    public string[] XAxisLabels = { "Ventas" };
+
+    private List<BreadcrumbItem> _items = new List<BreadcrumbItem>
+    {
+        new BreadcrumbItem("Productos", href: "/products"),
+        new BreadcrumbItem("Estadisticas", href: "/statistics"),
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        sales = await salesService.GetSales();
+
+        var groups = from sale in sales
+                     group sale by sale.ProductId into newGroup
+                     orderby newGroup.Key
+                     select newGroup;
+
+        foreach(var item in groups)
+        {
+            Series.Add(new ChartSeries() { Name = item.FirstOrDefault().ProductName, Data = new double[] { item.FirstOrDefault().Quantity } });
+        }
+
+        StateHasChanged();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        LoggedIn = await sessionStorage.GetItemAsync<bool>("loggedIn");
+    }
+
+
+
+
+}
+

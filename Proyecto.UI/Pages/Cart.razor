@@ -1,0 +1,102 @@
+﻿@page "/cart"
+@using Models
+@using Interfaces
+@inject ISalesService salesService
+@inject NavigationManager navigation
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+
+<MudBreadcrumbs Items="_items"></MudBreadcrumbs>
+
+@if (cart != null)
+{
+    <MudSimpleTable Hover="true" Bordered="true" Striped="true" Style="overflow-x: auto;padding:25px;">
+        <thead>
+            <tr>
+                @foreach (var h in headings)
+                {
+                    <th>@h</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var row in cart)
+            {
+                <tr>
+                    <td><img src="@(path + row.imagePath)" width="50" height="50" /></td>
+                    <td>@row.ProductName</td>
+                    <td>@row.Quantity</td>
+                    <td>@row.Price</td>
+                    <td><a @onclick="() => Delete(row.ProductName)" style="color:red;">Eliminar</a></td>
+                </tr>
+            }
+        </tbody>
+
+        <MudButton Class="cartButtons" Style="margin:25px" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Cancel" Color="Color.Error" OnClick="() => Cancel()">Cancelar</MudButton>
+        <MudButton Class="cartButtons" Style="margin:25px" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Money" Color="Color.Success" OnClick="() => AddSale()">Comprar</MudButton>
+    </MudSimpleTable>
+}
+else
+{
+    <MudText Variant="Variant.Filled" Color="Color.Secondary">No hay nada en el carrito de compras</MudText>
+}
+
+
+
+@code {
+    List<Models.Cart> cart = new List<Models.Cart>();
+    List<Sales> sales = new List<Sales>();
+    string[] headings = { "", "Nombre", "Cantidad", "Precio", "" };
+    public bool LoggedIn { get; set; }
+    string path = "/images/";
+
+    private List<BreadcrumbItem> _items = new List<BreadcrumbItem>
+{
+        new BreadcrumbItem("Tienda", href: "/store"),
+        new BreadcrumbItem("Carrito", href: "/cart"),
+    };
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        LoggedIn = await sessionStorage.GetItemAsync<bool>("loggedIn");
+
+        cart = await sessionStorage.GetItemAsync<List<Models.Cart>>("cart");
+
+        StateHasChanged();
+    }
+
+    private void Cancel()
+    {
+        navigation.NavigateTo("/store");
+    }
+
+    private async void AddSale()
+    {
+        foreach (var item in cart)
+        {
+            Sales newSale = new Sales();
+            newSale.ProductId = item.ProductId;
+            newSale.Quantity = item.Quantity;
+            newSale.saleDate = DateTime.Now;
+            newSale.Type = "Domicilio";
+            newSale.UserId = 1;
+            newSale.Price = item.Price;
+
+            sales.Add(newSale);
+        }
+
+        await salesService.InsertSale(sales);
+
+        navigation.NavigateTo("/store");
+    }
+
+    private async void Delete(string name)
+    {
+        var item = cart.Find(x => x.ProductName == name);
+        cart.Remove(item);
+
+        await sessionStorage.SetItemAsync<List<Models.Cart>>("cart", cart);
+
+        StateHasChanged();
+    }
+}

@@ -1,0 +1,72 @@
+﻿@page "/products"
+@using Models
+@using Interfaces
+@inject IProductService productService
+@inject NavigationManager navigation
+
+<MudBreadcrumbs Items="_items"></MudBreadcrumbs>
+
+<br />
+<br />
+
+@if (products.Count == 0)
+{
+
+
+    <p>No hay productos en la base de datos</p>
+}
+else
+{
+    <MudIconButton Link="/manageProducts" Style="margin-bottom:25px;" Icon="@Icons.Material.Filled.Add" aria-label="Adicionar"></MudIconButton>
+
+    <MudSimpleTable Hover="true" Bordered="true" Striped="true" Style="overflow-x: auto;">
+        <thead>
+            <tr>
+                @foreach (var h in headings)
+                {
+                    <th>@h</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in products)
+            {
+                <tr>
+                    <td>@row.id</td>
+                    <td>@row.name</td>
+                    <td>@row.category</td>
+                    <td>@row.description</td>
+                    <td>@row.price</td>
+                    <td><img src="/images/@row.imagePath" height="50" width="50" /></td>
+                    <td><a href="/manageProducts/@row.id">Editar</a></td>
+                    <td><MudButton Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error" OnClick="() => DeleteProduct(row.id)">Eliminar</MudButton></td>
+                </tr>
+            }
+        </tbody>
+    </MudSimpleTable>
+}
+
+@code {
+
+    string[] headings = { "ID", "Nombre", "Categoria", "Descripción", "Precio", "Imagen", "", "" };
+    List<Models.Products> products = new List<Models.Products>();
+    public bool LoggedIn { get; set; }
+
+    private List<BreadcrumbItem> _items = new List<BreadcrumbItem>
+    {
+        new BreadcrumbItem("Productos", href: "/products"),
+        new BreadcrumbItem("Estadisticas", href: "/statistics"),
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = await productService.GetAllProducts();
+    }
+
+    private async Task DeleteProduct(int id)
+    {
+        await productService.DeleteProduct(id);
+
+        products = await productService.GetAllProducts();
+    }
+}

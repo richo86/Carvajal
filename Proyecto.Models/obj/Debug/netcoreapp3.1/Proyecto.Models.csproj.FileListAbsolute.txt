@@ -1,0 +1,10 @@
+D:\Carvajal\Proyecto.Models\bin\Debug\netcoreapp3.1\Proyecto.Models.deps.json
+D:\Carvajal\Proyecto.Models\bin\Debug\netcoreapp3.1\Proyecto.Models.dll
+D:\Carvajal\Proyecto.Models\bin\Debug\netcoreapp3.1\Proyecto.Models.pdb
+D:\Carvajal\Proyecto.Models\obj\Debug\netcoreapp3.1\Proyecto.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\Carvajal\Proyecto.Models\obj\Debug\netcoreapp3.1\Proyecto.Models.AssemblyInfoInputs.cache
+D:\Carvajal\Proyecto.Models\obj\Debug\netcoreapp3.1\Proyecto.Models.AssemblyInfo.cs
+D:\Carvajal\Proyecto.Models\obj\Debug\netcoreapp3.1\Proyecto.Models.csproj.CoreCompileInputs.cache
+D:\Carvajal\Proyecto.Models\obj\Debug\netcoreapp3.1\Proyecto.Models.dll
+D:\Carvajal\Proyecto.Models\obj\Debug\netcoreapp3.1\Proyecto.Models.pdb
+D:\Carvajal\Proyecto.Models\obj\Debug\netcoreapp3.1\Proyecto.Models.csproj.AssemblyReference.cache

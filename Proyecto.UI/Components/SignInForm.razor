@@ -1,0 +1,75 @@
+﻿@page "/signin"
+@using System.ComponentModel.DataAnnotations
+@using Models
+@using Interfaces
+@inject IAuthentication authenticationService
+@inject NavigationManager navigation
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+
+<EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+    <MudGrid Style="margin-top:250px">
+        <MudItem xs="12" sm="6">
+            <MudCard>
+                @if (Message != null)
+                {
+                    <MudText Typo="Typo.h6" Class="red-text">@Message</MudText>
+                }
+                <MudCardContent>
+                    <MudTextField Label="Email" HelperText="El correo con el cual te registraste en la tienda" Class="mt-3"
+                                  @bind-Value="model.Email" For="@(() => model.Email)" />
+                    <MudTextField Label="Password" HelperText="Ingresa tu contraseña" Class="mt-3"
+                                  @bind-Value="model.Password" For="@(() => model.Password)" InputType="InputType.Password" />
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Success" Class="ml-auto">Ingresar</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+</EditForm>
+@code {
+    SignInAccountForm model = new SignInAccountForm();
+    string Message = null;
+    Models.Products product = new Products();
+    bool LoggedIn = false;
+
+    public class SignInAccountForm
+    {
+        [Required (ErrorMessage = "Este campo es requerido.")]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required (ErrorMessage = "Este campo es requerido.")]
+        [StringLength(30, ErrorMessage = "Contraseña no valida", MinimumLength = 4)]
+        public string Password { get; set; }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        LoggedIn = await sessionStorage.GetItemAsync<bool>("loggedIn");
+    }
+
+    private async void OnValidSubmit(EditContext context)
+    {
+        StateHasChanged();
+
+        var user = authenticationService.SignIn(model.Email, model.Password).Result;
+
+        if (user.isLoggedIn == "false" || user.isLoggedIn == null)
+            Message = "No ha sido posible iniciar sesión. Comprueba tus credenciales e intentalo nuevamente";
+        else
+            await sessionStorage.SetItemAsync<bool>("loggedIn", true);
+
+        if (user.isLoggedIn == "true" && user.role == Roles.Admin)
+            navigation.NavigateTo("/products");
+        else if(user.isLoggedIn == "true" && user.role == Roles.client)
+            navigation.NavigateTo("/store");
+    }
+
+    public void signOut()
+    {
+        sessionStorage.ClearAsync();
+        LoggedIn = false;
+    }
+}

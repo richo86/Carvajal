@@ -1,0 +1,62 @@
+﻿@page "/store"
+@inject NavigationManager navigation
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+
+@if (!LoggedIn)
+{
+    <MudText Typo="Typo.h6" Color="Color.Error">No has iniciado sesión</MudText>
+
+    <MudButton Style="margin-top:50px;" Variant="Variant.Filled" Color="Color.Info" OnClick="() => navigateBack()">Regresar</MudButton>
+}
+else
+{
+    <Proyecto.UI.Components.NavegacionCliente></Proyecto.UI.Components.NavegacionCliente>
+
+    <MudGrid Spacing="9" Justify="Justify.Center">
+
+        <MudItem>
+            <img style="margin-bottom:25px;" class="storeImage" height="600" width="300" src="images/pinturas.jpg" />
+            <MudText Style="font-weight:bold;">Pinturas</MudText>
+            <MudButton Style="margin-top:15px;" Variant="Variant.Outlined" Color="Color.Primary" @onclick="(() => redirect(category1))">Comprar</MudButton>
+        </MudItem>
+
+        <MudItem>
+            <img style="margin-bottom:25px;" class="storeImage" height="600" width="300" src="images/escultura.jpg" />
+            <MudText Style="font-weight:bold;">Esculturas</MudText>
+            <MudButton Style="margin-top:15px;" Variant="Variant.Outlined" Color="Color.Primary" @onclick="(() => redirect(category2))">Comprar</MudButton>
+        </MudItem>
+
+        <MudItem>
+            <img style="margin-bottom:25px;" class="storeImage" height="600" width="300" src="images/arquitectura.jpg" />
+            <MudText Style="font-weight:bold;">Reliquias</MudText>
+            <MudButton Style="margin-top:15px;" Variant="Variant.Outlined" Color="Color.Primary" @onclick="(() => redirect(category3))">Comprar</MudButton>
+        </MudItem>
+
+    </MudGrid>
+}
+
+
+@code {
+    string category1 = "/store/Pinturas";
+    string category2 = "/store/Esculturas";
+    string category3 = "/store/Reliquias";
+
+    public bool LoggedIn = false;
+
+    private void redirect(string route)
+    {
+        navigation.NavigateTo(route);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        LoggedIn = await sessionStorage.GetItemAsync<bool>("loggedIn");
+
+        StateHasChanged();
+    }
+
+    private void navigateBack()
+    {
+        navigation.NavigateTo("/");
+    }
+}

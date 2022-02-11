@@ -1,0 +1,4 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="_content/Blazor.Extensions.Logging" Path="C:\Users\richo\.nuget\packages\blazor.extensions.logging\2.0.4\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/MudBlazor" Path="C:\Users\richo\.nuget\packages\mudblazor\5.2.0\build\..\staticwebassets\" />
+</StaticWebAssets>

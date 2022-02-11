@@ -1,0 +1,6 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="/" Path="D:\Carvajal\Proyecto.UI\obj\Debug\netcoreapp3.1\scopedcss\bundle\" />
+  <ContentRoot BasePath="_content/Blazor.Extensions.Logging" Path="C:\Users\richo\.nuget\packages\blazor.extensions.logging\2.0.4\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/BlazorInputFile" Path="C:\Users\richo\.nuget\packages\blazorinputfile\0.2.0\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/MudBlazor" Path="C:\Users\richo\.nuget\packages\mudblazor\2.0.7\build\..\staticwebassets\" />
+</StaticWebAssets>

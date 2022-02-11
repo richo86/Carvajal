@@ -1,0 +1,91 @@
+﻿@page "/manageProducts"
+@page "/manageProducts/{id:int}"
+@using Models
+@using Interfaces
+@inject IProductService productService
+@inject NavigationManager navigation
+@inject IFileUpload fileUpload
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+
+<EditForm Model="@product" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+    <MudGrid>
+        <MudItem xs="12" sm="4">
+            <MudCard>
+                <MudText Typo="Typo.h4">@title</MudText>
+                @if (Message != null)
+                {
+                    <MudText Typo="Typo.h6" Class="red-text">@Message</MudText>
+                }
+                <MudCardContent>
+                    <MudTextField Required="true" Label="Nombre" HelperText="nombre del producto" Class="mt-3"
+                                  @bind-Value="product.name" For="@(() => product.name)" />
+                    <MudTextField Required="true" Class="mt-3" T="string" Label="Descripción" Variant="Variant.Outlined" @bind-Text="product.description" Lines="3" />
+                    <MudSelect Required="true" Class="mt-3" T="Categorias" Label="Categoria" AnchorOrigin="Origin.BottomCenter">
+                        <MudSelectItem Value="@(Categorias.Reliquias)" />
+                        <MudSelectItem Value="@(Categorias.Esculturas)" />
+                        <MudSelectItem Value="@(Categorias.Pinturas)" />
+                    </MudSelect>
+                    <MudTextField Required="true" Class="mt-3" @bind-Value="product.price" Label="Precio" Variant="Variant.Text" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AttachMoney" />
+                    <InputFile Style="margin-top:25px;" OnChange="HandleFileSelected"></InputFile>
+                    <MudText Class="mt-3">@name</MudText>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Success" Class="ml-auto">Enviar</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+</EditForm>
+
+@code {
+
+    [Parameter]
+    public int id { get; set; }
+    Models.Products product = new Models.Products();
+    public string Message { get; set; }
+    IFileListEntry file;
+    string name = null;
+    string title = "Crear producto";
+    public bool LoggedIn { get; set; }
+
+    private void HandleFileSelected(IFileListEntry[] files)
+    {
+        file = files.FirstOrDefault();
+        name = file.Name;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (id != 0)
+        {
+            product = await productService.GetProduct(id);
+            title = "Editar producto";
+            name = product.imagePath;
+        }
+
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        LoggedIn = await sessionStorage.GetItemAsync<bool>("loggedIn");
+
+        StateHasChanged();
+    }
+
+    private async void OnValidSubmit(EditContext context)
+    {
+        if (file != null)
+        {
+            await fileUpload.UploadAsync(file);
+            product.imagePath = file.Name;
+            await productService.SaveProduct(product);
+            navigation.NavigateTo("/products");
+        }else if(product.imagePath != null)
+        {
+            await productService.SaveProduct(product);
+            navigation.NavigateTo("/products");
+        }
+    }
+}

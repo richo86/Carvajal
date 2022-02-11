@@ -1,0 +1,9 @@
+﻿<MudBreadcrumbs Items="_items"></MudBreadcrumbs>
+
+@code {
+    private List<BreadcrumbItem> _items = new List<BreadcrumbItem>
+    {
+        new BreadcrumbItem("Productos", href: "/products"),
+        new BreadcrumbItem("Estadisticas", href: "/statistics"),
+    };
+}
